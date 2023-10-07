@@ -1,0 +1,111 @@
+﻿@page
+@model pedidosPizzeria.Pages.PizzeriaModel
+@{
+}
+
+<center>
+    <div class="col-lg-7 mx-auto rounded border p-3" >
+        <center><h4>SuperPizza.com</h4></center>
+        <center><h4>Las mejores Pizzas por Internet</h4></center>
+    </div>
+    <br />
+    <div class="col-lg-7 mx-auto rounded border p-3">
+        <form method="post">
+            <!--Entrada-->
+            <div class="row mb-2">
+                <label class="col-sm-1 col-form-label"></label>
+                <label class="col-sm-3 col-form-label">Elige tu Pizza: </label>
+                <label class="col-sm-1 col-form-label"></label>
+                <label class="col-sm-3 col-form-label">Números de Pizza: </label>
+                <label class="col-sm-1 col-form-label"></label>
+                <label class="col-sm-3 col-form-label">Forma de Pago: </label>
+                <label class="col-sm-1 col-form-label"></label>
+            </div>
+
+            <div class="row mb-2">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-3">
+                    <select asp-for="pizza">
+                        <option>Hawayana $100</option>
+                        <option>Especial $120</option>
+                        <option>Vegetariana $150</option>
+                    </select>
+                </div>
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="number" required asp-for="num" />
+                </div>
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-3">
+                    <select asp-for="formaPago">
+                        <option>Tarjeta Credito</option>
+                        <option>PayPal</option>
+                    </select>
+                </div>
+                <label class="col-sm-1 col-form-label"></label>
+            </div>
+
+            <br />
+
+            <div class="row mb-2">
+                <label class="col-sm-1 col-form-label"></label>
+                <label class="col-sm-3 col-form-label">Nombre: </label>
+                <label class="col-sm-1 col-form-label"></label>
+                <label class="col-sm-3 col-form-label">Teléfono: </label>
+                <label class="col-sm-1 col-form-label"></label>
+            </div>
+
+            <div class="row mb-2">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" required autocomplete="off" asp-for="cliente" />
+                </div>
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" required autocomplete="off" asp-for="tel" />
+                </div>
+            </div>
+            <br />
+            <div class="row mb-2">
+                <label class="col-sm-1 col-form-label"></label>
+                <label class="col-sm-3 col-form-label">Dirección: </label>
+                <label class="col-sm-1 col-form-label"></label>
+            </div>
+
+            <!--Div para boton-->
+            <div class="row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" required autocomplete="off" asp-for="dire" />
+                </div>
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-3">
+                    <button type="submit" class="btn btn-primary">Enviar Pedido</button>
+                </div>
+            </div>
+        </form>
+
+        <br />
+    </div>
+    <br />
+
+    <!--Div para Resultados-->
+    <div class="col-lg-7 mx-auto rounded border p-3">
+        <div class="row mb-2">
+            <center><h3>Pedido Recibido</h3></center>
+            @if (Model.num > 0)
+            {
+                <p>
+                    <!--Impresiones llamando a las variables del @Model-->
+                    <strong>Cliente: </strong>@Model.cliente <br />
+                    <strong>Dirección: </strong>@Model.dire <br />
+                    <strong>Teléfono: </strong>@Model.tel <br />
+                    <strong>Pizza: </strong>@Model.pizza <br />
+                    <strong>Núm Pizzas: </strong>@Model.num <br />
+                    <strong>Forma de Pago: </strong>@Model.formaPago <br />
+                    <strong>Total a Pagar: </strong>@Model.total
+                </p>
+            }
+        </div>
+    </div>
+</center>
